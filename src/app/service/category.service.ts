@@ -17,11 +17,19 @@ private API_CATEGORY = environment.API_LOCAL+'category';
   getListCategory(): Observable<any>{
     return this.httpClient.get(this.API_CATEGORY);
   }
-  checkCreate = false;
-  setCheckCreate(checkCreate: boolean){
-    this.checkCreate =  checkCreate;
+  getCategoryById(id: number): Observable<any>{
+    return this.httpClient.get(this.API_CATEGORY+'/'+id)
+    // return this.httpClient.get(`${this.API_CATEGORY}/${id}`)
   }
-  getCheckCreate(){
-    return this.checkCreate;
+  updateCategoryService(id:number, category:Category): Observable<any>{
+    return this.httpClient.put(this.API_CATEGORY+'/'+id, category)
+  }
+  // getPageCategory(request: any): Observable<any>{
+  //   const params = request;
+  //   return this.httpClient.get(this.API_CATEGORY+'/page',{params})
+  // }
+  getPageCategory(request: any){
+    const params = request;
+    return this.httpClient.get(this.API_CATEGORY+'/page',{params})
   }
 }

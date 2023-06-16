@@ -1,0 +1,40 @@
+/*.column {*/
+/*  float: left;*/
+/*  width: 33.3%;*/
+/*  padding: 10px 10px;*/
+/*}*/
+/*.card {*/
+/*  box-shadow: 12px 12px 2px 1px rgba(60,84,255,0.94);*/
+/*  text-align: center;*/
+/*  background-color: #17e8e8;*/
+/*}*/
+/*div.card {*/
+/*  padding: 10px;*/
+/*}*/
+/*img {*/
+/*  width: auto;*/
+/*  height: 200px;*/
+/*  border-radius: 8%;*/
+/*}*/
+
+.column {
+  width: 33.3%;
+  padding: 10px 10px;
+}
+
+.card {
+  box-shadow: 10px 10px 2px 1px #0beedb;
+  text-align: center;
+  background-color: #84ff00;
+  padding: 10px;
+}
+
+/*img {*/
+/*  height: 200px;*/
+/*  width: auto;*/
+/*}*/
+img {
+  height: 200px;
+  width: auto;
+  border-radius: 8%;
+}

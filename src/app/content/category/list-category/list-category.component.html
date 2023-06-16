@@ -2,8 +2,65 @@
   <div class="row">
     <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
       <mat-card style="margin: 0">
-        <button (click)="openDialog()" type="submit" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Create Category
-          <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon></button>
+        <button *ngIf="checkUserLogin" (click)="openDialog()" type="submit" mat-stroked-button color="accent"
+                class="mat-button-toggle-group btn-outline-primary">Create Category
+          <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+        </button>
+        <!--        <table border="1" class="table">-->
+        <!--          <tr>-->
+        <!--            <th>STT</th>-->
+        <!--            <th>NAME</th>-->
+        <!--            <th>AVATAR</th>-->
+        <!--          </tr>-->
+        <!--        <tbody>-->
+        <!--          <tr *ngFor="let ct of listCategory">-->
+        <!--            <td>{{ct.id}}</td>-->
+        <!--            <td>{{ct.name}}</td>-->
+        <!--            <td><img src="{{ct.avatar}}" width="50px" height="50px"></td>-->
+        <!--          </tr>-->
+        <!--        </tbody>-->
+        <!--        </table>-->
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> No.</th>
+              <td mat-cell *matCellDef="let element; let i = index"> {{i+1}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name</th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="avatar">
+              <th mat-header-cell *matHeaderCellDef> Avatar</th>
+              <td mat-cell *matCellDef="let element"><img src="{{element.avatar}}" width="50px" height="50px"></td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="edit">
+              <th mat-header-cell *matHeaderCellDef> Edit</th>
+              <td mat-cell *matCellDef="let element">
+                <button (click)="openDialogUpdate(element.id)"  mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+
       </mat-card>
     </div>
   </div>

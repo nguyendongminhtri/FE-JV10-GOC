@@ -26,6 +26,13 @@ import { ChildOutputComponent } from './input-output/@output/child-output/child-
 import { DadOutputComponent } from './input-output/@output/dad-output/dad-output.component';
 import { ChangeAvatarComponent } from './form-login/change-avatar/change-avatar.component';
 import {AuthInterceptor} from "./service/auth.interceptor";
+import { ListCategoryComponent } from './content/category/list-category/list-category.component';
+import { CreateCategoryComponent } from './content/category/create-category/create-category.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import { UpdateCategoryComponent } from './content/category/update-category/update-category.component';
+import { PageCategoryComponent } from './content/page-category/page-category.component';
 
 
 @NgModule({
@@ -41,7 +48,11 @@ import {AuthInterceptor} from "./service/auth.interceptor";
     ChildComponent,
     ChildOutputComponent,
     DadOutputComponent,
-    ChangeAvatarComponent
+    ChangeAvatarComponent,
+    ListCategoryComponent,
+    CreateCategoryComponent,
+    UpdateCategoryComponent,
+    PageCategoryComponent
   ],
   imports: [
     HttpClientModule,
@@ -56,7 +67,10 @@ import {AuthInterceptor} from "./service/auth.interceptor";
     MatButtonModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

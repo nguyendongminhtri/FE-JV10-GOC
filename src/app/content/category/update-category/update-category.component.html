@@ -3,18 +3,21 @@
     <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
       <mat-card style="margin: 0">
 
-        <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid&&createCategory()">
+        <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid&&updateCategory()">
           <mat-error class="alert alert-primary">{{status}}</mat-error>
           <mat-form-field appearance="outline" style="width: 300px">
             <mat-label>Name:</mat-label>
-            <input name="name" #name="ngModel" [(ngModel)]="form.name" matInput placeholder="Name" required
+            <input name="name" [(ngModel)]="category.name" value="{{category.name}}" matInput placeholder="Name"
                    minlength="3" maxlength="50">
             <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
           </mat-form-field>
           <br>
+          <mat-label >Old Image:</mat-label>
+          <br>
+          <img src="{{category.avatar}}" width="50" height="50" alt="">
+          <br>
           <app-upload-avatar (giveURLtoCreate)="onUpload($event)"></app-upload-avatar>
-          <button type="submit" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Create Category
+          <button type="submit" mat-stroked-button color="accent" class="mat-button-toggle-group btn-outline-primary">Update Category
             <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon></button>
         </form>
         <button mat-raised-button [mat-dialog-close]="true" color="warn" cdkFocusInitial>Close And Render List</button>
