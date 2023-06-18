@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
+      <mat-dialog-content class="mat-typography">
+      <mat-card style="margin: 0">
+
+          <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid&&createSong()" novalidate >
+            <mat-error class="alert alert-primary">{{status}}</mat-error>
+            <mat-form-field appearance="outline" style="width: 300px">
+              <mat-label>Name:</mat-label>
+              <input name="name" #name="ngModel" [(ngModel)]="form.name" matInput placeholder="Name" required
+                     minlength="3" maxlength="50">
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" style="width: 300px">
+              <mat-label>Name:</mat-label>
+              <textarea name="lyrics" #lyrics="ngModel" [(ngModel)]="form.lyrics" matInput placeholder="Lyrics" required
+                        minlength="3" maxlength="50"></textarea>
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error *ngIf="lyrics.hasError('required')">The lyrics is required!</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" style="width: 300px">
+              <mat-label>Category</mat-label>
+              <mat-select [formControl]="validateCategory" [(ngModel)]="form.category"  required>
+                <mat-option *ngFor="let ctg of listCategory" [value]="ctg" >
+                  {{ctg.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="validateCategory.hasError('required')">Please select one category!</mat-error>
+            </mat-form-field>
+            <app-upload-avatar (giveURLtoCreate)="onUploadAvatar($event)"></app-upload-avatar>
+            <app-upload-file (giveURLtoCreate)="onUploadFile($event)"></app-upload-file>
+            <button  type="submit" mat-stroked-button color="accent"
+                     class="mat-button-toggle-group btn-outline-primary">Create Song
+              <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+            </button>
+          </form>
+
+
+      </mat-card>
+      </mat-dialog-content>
+    </div>
+  </div>
+</div>
